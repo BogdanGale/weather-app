@@ -10,11 +10,12 @@ const forecast = (lat, long, callback) => {
 			} else if (body.error) {
 				callback('Unable to retrieve forecast. Try another search.', undefined)
 			} else {
-				const { weather_descriptions, temperature, feelslike } = body.current
+				const { weather_descriptions, temperature, feelslike, humidity } =
+					body.current
 
 				callback(
 					undefined,
-					`${weather_descriptions[0]}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out`
+					`${weather_descriptions[0]}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out. The humidity is ${humidity}%.`
 				)
 			}
 		} catch (err) {
